@@ -1,0 +1,83 @@
+
+package practice1;
+
+import java.io.InputStream;
+import java.util.Scanner;
+
+public class DuplicateLinkedList
+{
+    static Node head;
+
+
+    static class Node
+	{
+		int data;
+		Node next;
+		Node(int data)
+		{
+			this.data=data;
+			next=null;
+		}
+	}
+
+	public static void insert(int data)
+	{
+		Node current=head;
+		Node new_Node=new Node(data);
+		if(head==null)
+		{
+			head=new_Node;
+			return;
+		}
+		while(current.next!=null)
+		{
+			current=current.next;
+		}
+		current.next=new_Node;
+
+	}
+	public static void display()
+	{
+		Node current=head;
+		while(current!=null)
+		{
+			System.out.println(current.data);
+			current=current.next;
+		}
+	}
+	public static void duplicate()
+	{
+		Node current=head;
+		while(current!=null)
+		{
+			Node temp=current;
+			while(temp.next!=null)
+			{
+				if(temp.next.data==current.data)
+				{
+					temp.next=temp.next.next;
+				}
+				else
+				{
+					temp=temp.next;
+				}
+			}
+			current=current.next;
+		}
+	}
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		DuplicateLinkedList dl=new DuplicateLinkedList();
+		System.out.println("Enter the number of elements:");
+		int n=sc.nextInt();
+		System.out.println("Enter an unsorted  linked list:");
+		for(int i=0;i<n;i++)
+		{
+			dl.insert(sc.nextInt());
+		}
+		dl.duplicate();
+		dl.display();
+	}
+
+}
