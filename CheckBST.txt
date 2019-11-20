@@ -1,0 +1,70 @@
+
+package practice1;
+  class Node1
+{
+        int data;
+        Node1 left;
+        Node1 right;
+
+        public Node1(int data)
+        {
+            this.data = data;
+            left=null;
+            right=null;
+        }
+}
+public class CheckBST
+{
+  static Node1 root;
+CheckBST()
+    {
+        root=null;
+    }
+    CheckBST(int key)
+    {
+        root=new Node1(key);
+    }
+
+ public static boolean check(Node1 root)
+ {
+     if(root.left!=null || root.right!=null)
+     {
+         if(root.data<root.left.data)
+         {
+             return false;
+         }
+         else if(root.data>root.right.data)
+         {
+             return false;
+         }
+         else
+         {
+             check(root.left);
+             check(root.right);
+         }
+
+     }
+     return true;
+ }
+    public static void main(String[] args)
+    {
+
+        root=new Node1(70);
+        root.left=new Node1(50);
+        root.left.left=new Node1(30);
+        root.left.right=new Node1(60);
+        root.right=new Node1(100);
+        root.right.left=new Node1(80);
+        root.right.right=new Node1(150);
+
+        if(check(root))
+        {
+            System.out.println("It is a Binary Search Tree");
+        }
+        else
+        {
+            System.out.println("It is not a Binary Search Tree");
+        }
+
+    }
+}
