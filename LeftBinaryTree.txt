@@ -1,0 +1,49 @@
+
+package practice1;
+ class node
+{
+    int data;
+    node left,right;
+    public node(int item)
+    {
+        data=item;
+        left=right=null;
+    }
+}
+public class LeftBinaryTree
+{
+     node root;
+    void printview()
+    {
+        print(root,1);
+    }
+    static int lv=0;
+    void print(node root,int n)
+    {
+        if(root==null)
+            return;
+        if(lv<n)
+        {
+            System.out.println(root.data + " ");
+            lv=n;
+        }
+
+        print(root.left,n+1);
+        print(root.right,n+1);
+    }
+    public static void main(String args[])
+    {
+        LeftBinaryTree lbt =new LeftBinaryTree();
+        lbt.root=new node(16);
+        lbt.root.left=new node(24);
+       lbt.root.right=new node(32);
+        lbt.root.left.left=new node(40);
+        lbt.root.left.right = new node(58);
+        lbt.root.right.right=new node(66);
+        lbt.root.right.right.left = new node(72);
+        lbt.root.right.right.left.right = new node(80);
+        lbt.printview();
+
+
+    }
+}
