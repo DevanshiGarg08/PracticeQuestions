@@ -1,0 +1,51 @@
+
+package practice1;
+
+import java.util.Scanner;
+
+public class HighestPrimeFactor
+{
+    int max=0;
+	boolean bool=false;
+	void input(int n)
+	{
+		max=-1;
+		for(int i=1;i<=n;i++)
+		{
+			if(n%i==0)
+			{
+				n=n/i;
+				bool=checkPrime(i);
+				if(bool)
+				{
+					if(i>max)
+					{
+						max=i;
+					}
+				}
+			}
+		}
+		System.out.println("Highest Prime Factor : "+max);
+	}
+	static boolean checkPrime(int a)
+	{
+		for(int i=2;i<a;i++)
+		{
+			if(a%i==0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	public static void main(String args[])
+	{
+            HighestPrimeFactor f=new HighestPrimeFactor();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a number : ");
+		int n=sc.nextInt();
+                f.input(n);
+
+	}
+
+}
