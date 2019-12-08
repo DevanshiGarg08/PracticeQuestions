@@ -1,0 +1,71 @@
+
+package practice1;
+
+import java.util.Scanner;
+
+public class LeafNodes
+{
+
+static class Node
+{
+int data;
+Node left;
+Node right;
+	Node()
+	{
+	left=right=null;
+	}
+	Node(int data)
+	{
+	this.data=data;
+	}
+
+}
+ static Node root;
+LeafNodes()
+    {
+        root=null;
+    }
+LeafNodes(int data)
+    {
+        root=new Node(data);
+    }
+public static Node insert(Node root,int data)
+{
+	if(root==null)
+	{
+	Node temp=new Node(data);
+	return temp;
+	}
+		if(data<root.data)
+		{
+		root.left=insert(root.left,data);
+		}
+		else if(data>root.data)
+		{
+		root.right=insert(root.right,data);
+		}
+return root;
+}
+	public static void leaf(Node root)
+	{
+	if(root==null)
+	return;
+	if(root.right==null && root.left==null)
+	System.out.println(root.data+" ");
+	leaf(root.left);
+	leaf(root.right);
+	}
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+LeafNodes lf=new LeafNodes(50);
+       lf.insert(lf.root, 30);
+        lf.insert(lf.root, 80);
+        lf.insert(lf.root, 20);
+        lf.insert(lf.root, 60);
+        lf.insert(lf.root, 45);
+        lf.insert(lf.root, 90);
+lf.leaf(lf.root);
+}
+}
